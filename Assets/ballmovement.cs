@@ -8,7 +8,9 @@ public class ballmovement : MonoBehaviour
     public int speed = Random.Range(20, 26);
     public Rigidbody2D sesuatu;
 
+    
     public Animator animtr;
+    public AudioSource hitEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,10 @@ public class ballmovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.name=="Kanan" || other.collider.name=="Kiri"){
             StartCoroutine(jeda());
+        }
+        if (other.collider.tag == "Player")
+        {
+            hitEffect.Play();
         }
     }
 
